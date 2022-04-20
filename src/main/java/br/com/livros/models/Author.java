@@ -42,13 +42,7 @@ public class Author implements Serializable{
 	private Date nascimento;
 	
 	@Column(name = "NCL_ID ")
-	private int nascionalidade_id;
-
-	
-	
-	
-	
-	
+	private int nacionalidade_id;
 	
 
 }

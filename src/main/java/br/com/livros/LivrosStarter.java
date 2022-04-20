@@ -6,16 +6,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LivrosStarter {	
-	
+public class LivrosStarter {		
     	
 	@SuppressWarnings("static-access")
 	private static Logger log = LogManager.getLogger(LivrosStarter.class);
 	
 	public static void main(String[] args) {	
-		log.info("First Class start");
 		
-        SpringApplication.run(LivrosStarter.class, args);	
+		log.info("First Class starts");
+		SpringApplication.run(LivrosStarter.class, args);	
         
-	}
+	}	
+	
 }

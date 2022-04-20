@@ -10,4 +10,8 @@ public class CathegoryNotFoundException extends RuntimeException {
 	public CathegoryNotFoundException(Long id) {
 	        super(String.format("Cathegory with id (%d) not found",id));
 	}
+	
+	public CathegoryNotFoundException(String msg) {
+		super(msg);
+	}
 }

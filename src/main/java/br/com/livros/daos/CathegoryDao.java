@@ -29,7 +29,8 @@ public class CathegoryDao {
 	}
 	
 	public List<Cathegory> findAllCategories(){
-		return (List<Cathegory>) cathegoryRepository.findAll();
+		List<Cathegory> categories =  (List<Cathegory>) cathegoryRepository.findAll();
+		return categories; // (List<Cathegory>) 
 	}
 
 	public Optional<Cathegory> findById(Long id) {

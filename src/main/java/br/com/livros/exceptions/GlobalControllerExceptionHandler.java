@@ -11,31 +11,43 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@RestControllerAdvice
+@ControllerAdvice
 public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler(CathegoryNotFoundException.class)
-	@ResponseStatus(HttpStatus.NOT_FOUND)
+	@ExceptionHandler(value = {CathegoryNotFoundException.class, NationalityException.class})
+	@ResponseStatus(value =  HttpStatus.NOT_FOUND)
 	public ResponseEntity<Object> handleCathegoryNotFound(RuntimeException ex, WebRequest request) {
 
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", LocalDateTime.now());
-		body.put("Message", "Cathegory Not Found now");
-		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+		body.put("Message", ex.getMessage());
+		return new ResponseEntity<Object>(body, HttpStatus.NOT_FOUND);
 	}
-
-	public ResponseEntity<Object> handleNoDataFound(NoDataFoundException ex, WebRequest request) {
-
+	
+	@ExceptionHandler(AuthorNotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public ResponseEntity<Object> handleAuthorNotFound(RuntimeException ex, WebRequest request){
+		
 		Map<String, Object> body = new LinkedHashMap<>();
-		body.put("timestamp", LocalDateTime.now());
-		body.put("nessage", "Cathegory not found");
-		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+		body.put("timestamp",LocalDateTime.now());
+		body.put("Message", ex.getMessage());	
+		return new ResponseEntity<Object>(body, HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(GeneralException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ResponseEntity<Object> handleAuthorNotServerError(RuntimeException ex, WebRequest request){
+		
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp",LocalDateTime.now());
+		body.put("Message", "Author Not Found MeanWhile");	
+		return new ResponseEntity<Object>(body, HttpStatus.NOT_FOUND);
 	}
 	
 	    @Override

@@ -1,4 +1,4 @@
-package br.com.livros.services;
+package br.com.livros.services.implementation;
 
 import java.util.List;
 
@@ -21,7 +21,10 @@ public class CathegoryServiceImpl implements CathegoryService {
 
 	@Override
 	public Cathegory findById(Long id) {
-		return cathegoryDao.findById(id).orElseThrow(() -> new CathegoryNotFoundException(id));
+		
+		Cathegory cathegory = cathegoryDao.findById(id).orElseThrow(()-> new CathegoryNotFoundException(id));
+		
+		return cathegory;
 	}
 
 	@Override
@@ -34,7 +37,7 @@ public class CathegoryServiceImpl implements CathegoryService {
 		List<Cathegory> cathegories = cathegoryDao.findAllCategories();
 
 		if (cathegories.isEmpty()) {
-			throw new NoDataFoundException();
+			throw new CathegoryNotFoundException("Nao ha dados para exibição.");
 		}
 
 		return cathegories;

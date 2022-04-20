@@ -19,12 +19,12 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="CATEGORIAS")
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @ToString
+@Table(name="CATEGORIAS")
 public class Cathegory implements Serializable {
 	
 	
@@ -48,6 +48,10 @@ public class Cathegory implements Serializable {
 	@NotNull
 	@Column(name = "CAT_DESCR")
 	private String descricao;
+	
+	
+	
+	
 
 	
 	
