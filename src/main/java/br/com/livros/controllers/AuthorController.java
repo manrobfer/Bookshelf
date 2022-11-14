@@ -2,6 +2,7 @@ package br.com.livros.controllers;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 import javax.validation.Valid;
 
@@ -9,11 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.livros.models.Author;
 import br.com.livros.services.AthorsServiceImpl;
@@ -24,7 +21,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @RestController
 @RequestMapping("/author")
 public class AuthorController  {
-	
+	private  Logger logger = Logger.getLogger(this.getClass().getName());
 	@Autowired
 	AthorsServiceImpl authorsService;
 	
@@ -46,9 +43,9 @@ public class AuthorController  {
 			@ApiResponse(responseCode = "200", description = "Author Found Successfuly "), 
 			@ApiResponse(responseCode = "400", description = "Invalid Path" ), 
 			@ApiResponse(responseCode = "404", description = "Author Not Saved" )}) 
-	@RequestMapping(value = "/find", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)		
+	@RequestMapping(value = "/find", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Author>> findAll(){
+		logger.info("Passou no find...");
 		List<Author> authors = authorsService.findAll();
 		return new ResponseEntity<List<Author>>(authors,HttpStatus.OK);
 			
@@ -60,9 +57,9 @@ public class AuthorController  {
 			@ApiResponse(responseCode = "200", description = "Author Found Successfuly "), 
 			@ApiResponse(responseCode = "400", description = "Invalid Path" ), 
 			@ApiResponse(responseCode = "404", description = "Author Not Saved" )}) 
-	@RequestMapping(value = "/find/{id}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)		
-	public Optional<Author> findById(Long id){
+	@RequestMapping(value = "/find/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Optional<Author> findById(@PathVariable Long id){
+		System.out.println("id encontrado "+ id);
 		return authorsService.findById(id);
 			
 	}
@@ -75,8 +72,8 @@ public class AuthorController  {
 			@ApiResponse(responseCode = "404", description = "Author Not Deleted" )}) 
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)		
-	public Author delete(Author autor){
-		return authorsService.delete(autor);
+	public Author delete(Author author){
+		return authorsService.delete(author);
 			
 	}
 	
