@@ -34,7 +34,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
 
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", LocalDateTime.now());
-		body.put("nessage", "Cathegory not found");
+		body.put("message", "Cathegory not found");
 		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
 	}
 	

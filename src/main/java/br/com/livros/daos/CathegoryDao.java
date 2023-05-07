@@ -18,14 +18,11 @@ public class CathegoryDao {
 	
 	public Cathegory save(Cathegory category) {
 		return cathegoryRepository.save(category);
-		
-	}
+		}
 	
 	public Cathegory delete(Cathegory category) {
 		cathegoryRepository.delete(category);
 		return null;
-		
-		
 	}
 	
 	public List<Cathegory> findAllCategories(){
