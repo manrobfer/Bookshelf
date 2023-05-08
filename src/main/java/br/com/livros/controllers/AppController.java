@@ -9,6 +9,6 @@ public class AppController {
 
     @GetMapping("/")
     public String getMessage(){
-        return "welcome here";
+        return "welcome to Jenkins deployment projects";
     }
 }
