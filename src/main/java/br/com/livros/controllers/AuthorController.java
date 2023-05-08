@@ -65,7 +65,7 @@ public class AuthorController  {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@Operation(summary = "Deletes Books Author ")
+	@Operation(summary = "Deletes Books Authors ")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Author Deleted Successfuly "), 
 			@ApiResponse(responseCode = "400", description = "Invalid Path" ), 
