@@ -52,6 +52,7 @@ public class CathegoryController {
 
 		} catch (Exception ex) {
 			ex.getMessage();
+			ex.printStackTrace();
 			return new ResponseEntity<List<Cathegory>> (HttpStatus.NOT_FOUND) ;
 		}
 	}

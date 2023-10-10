@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import javax.validation.Valid;
 
+import br.com.livros.dto.AuthorDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,11 +32,9 @@ public class AuthorController  {
 			@ApiResponse(responseCode = "200", description = "Author Saved Successfuly "), 
 			@ApiResponse(responseCode = "400", description = "Invalid Path" ), 
 			@ApiResponse(responseCode = "404", description = "Author Not Saved" )}) 
-	@RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)	
-	public ResponseEntity<Author> save(@RequestBody @Valid Author author) {			
-        return new ResponseEntity<Author>(authorsService.save(author),HttpStatus.CREATED);
-
+	@RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<AuthorDto> save(@RequestBody AuthorDto authorDto) {
+        return new ResponseEntity<AuthorDto>(authorsService.save(authorDto),HttpStatus.CREATED);
 }
 	@CrossOrigin(origins = "http://localhost:4200")
 	@Operation(summary = "Finds All Books Authors ")
@@ -72,7 +71,7 @@ public class AuthorController  {
 			@ApiResponse(responseCode = "404", description = "Author Not Deleted" )}) 
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)		
-	public Author delete(Author author){
+	public Author delete(AuthorDto author){
 		return authorsService.delete(author);
 			
 	}

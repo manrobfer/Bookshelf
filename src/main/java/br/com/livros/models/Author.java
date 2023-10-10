@@ -3,21 +3,14 @@ package br.com.livros.models;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import br.com.livros.dto.AuthorDto;
+import lombok.*;
 
 @Entity
 @Table(name = "AUTORES")
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -29,6 +22,10 @@ public class Author implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@SequenceGenerator(name="author_seq",
+			           sequenceName="author_seq",
+			           allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="author_seq")
 	@Column(name =  "AUT_ID")
 	private Long id;
 	
@@ -43,12 +40,5 @@ public class Author implements Serializable{
 	
 	@Column(name = "NCL_ID ")
 	private int nascionalidade_id;
-
-	
-	
-	
-	
-	
-	
 
 }
