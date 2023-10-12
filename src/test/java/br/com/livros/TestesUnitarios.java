@@ -13,19 +13,19 @@ public class TestesUnitarios {
 
     private Calculadora calc;
 
-    //@BeforeEach
+    @BeforeEach
     public void initVars(){
         calc = new Calculadora();
     }
 
 
-    //@Test
+    @Test
      void shouldOlnlyTest(){
         Assertions.assertEquals(11, 11);
         Assertions.assertTrue(12 > 11);
     }
 
-   // @Test
+    @Test
     void shouldSumValues(){
         int expected  = 21;
         int totalInt = calc.sum(10,11);
