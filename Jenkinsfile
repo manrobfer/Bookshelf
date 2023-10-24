@@ -5,10 +5,15 @@ agent any
             jdk 'JDK_LOCAL'
           }
        stages{
-           stage('Pipeline Bookshelf') {
+           stage('Limpada e constroi') {
                steps{
                    sh  'mvn clean package -DskipTests=true'
                }
            }
+          stage('Executa testes') {
+              steps{
+                  sh  'mvn test'
+              }
+          }
        }
 }
