@@ -1,9 +1,9 @@
 pipeline {
 agent any
        stages{
-           stage('Pipeline do Jenkins Bookshelf') {
+           stage('Pipeline Bookshelf') {
                steps{
-                   sh "mvn clean package"
+                   echo " Inicio Pipeline mvn clean package"
                }
            }
        }

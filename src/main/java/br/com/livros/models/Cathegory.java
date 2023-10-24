@@ -48,7 +48,5 @@ public class Cathegory implements Serializable {
 	@NotNull
 	@Column(name = "CAT_DESCR")
 	private String descricao;
-
-	
 	
 }

@@ -5,12 +5,13 @@ import java.util.Optional;
 
 import br.com.livros.dto.AuthorDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
+
 
 import br.com.livros.models.Author;
 import br.com.livros.repositories.AuthorsRepositories;
 
-@Repository
+@Component
 public class AuthorsDao {
 	
 	@Autowired

@@ -1,9 +1,10 @@
-package br.com.livros.services;
+package br.com.livros.services.impl;
 
 import java.util.List;
 import java.util.Optional;
 
 import br.com.livros.dto.AuthorDto;
+import br.com.livros.services.AuthorsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

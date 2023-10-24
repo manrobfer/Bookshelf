@@ -20,26 +20,24 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler(CathegoryNotFoundException.class)
+	@ExceptionHandler(CathegoryException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public ResponseEntity<Object> handleCathegoryNotFound(RuntimeException ex, WebRequest request) {
-
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", LocalDateTime.now());
-		body.put("Message", "Cathegory Not Found now");
+		body.put("Message", ex.getMessage());
 		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
 	}
 
 	public ResponseEntity<Object> handleNoDataFound(NoDataFoundException ex, WebRequest request) {
-
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", LocalDateTime.now());
 		body.put("nessage", "Cathegory not found");
 		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
 	}
 	
-	    @Override
-	    protected ResponseEntity<Object> handleMethodArgumentNotValid(
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(
 	        MethodArgumentNotValidException ex, HttpHeaders headers, 
 	        HttpStatus status, WebRequest request) {
 
@@ -58,4 +56,22 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
 	        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
 
 	     }
-	 }
+
+	@ExceptionHandler(TitleException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public ResponseEntity<Object> handleAuthorNotFound(RuntimeException ex, WebRequest request) {
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp", LocalDateTime.now());
+		body.put("Message", ex.getMessage());
+		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(PressException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public ResponseEntity<Object> handlePressNotFound(RuntimeException ex, WebRequest request) {
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp", LocalDateTime.now());
+		body.put("Message", ex.getMessage());
+		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+	}
+ }

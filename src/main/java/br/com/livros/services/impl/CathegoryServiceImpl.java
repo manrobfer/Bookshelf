@@ -1,14 +1,15 @@
-package br.com.livros.services;
+package br.com.livros.services.impl;
 
 import java.util.List;
 
+import br.com.livros.dto.CategoryDto;
+import br.com.livros.message.CathegoryMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.livros.daos.CathegoryDao;
-import br.com.livros.exceptions.CathegoryNotFoundException;
-import br.com.livros.exceptions.NoDataFoundException;
-import br.com.livros.interfaces.CathegoryService;
+import br.com.livros.exceptions.CathegoryException;
+import br.com.livros.services.CathegoryService;
 import br.com.livros.models.Cathegory;
 
 @Service
@@ -21,11 +22,11 @@ public class CathegoryServiceImpl implements CathegoryService {
 
 	@Override
 	public Cathegory findById(Long id) {
-		return cathegoryDao.findById(id).orElseThrow(() -> new CathegoryNotFoundException(id));
+		return cathegoryDao.findById(id).orElseThrow(() -> new CathegoryException(id));
 	}
 
 	@Override
-	public Cathegory save(Cathegory catherory) {
+	public Cathegory save(CategoryDto catherory) {
 		return cathegoryDao.save(catherory);
 	}
 
@@ -34,7 +35,7 @@ public class CathegoryServiceImpl implements CathegoryService {
 		List<Cathegory> cathegories = cathegoryDao.findAllCategories();
 
 		if (cathegories.isEmpty()) {
-			throw new NoDataFoundException();
+			throw new CathegoryException(CathegoryMessage.NO_DATA_FOUND);
 		}
 
 		return cathegories;
