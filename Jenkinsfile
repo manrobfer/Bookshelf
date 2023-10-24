@@ -2,7 +2,7 @@ pipeline {
 agent any
       tools {
             maven 'MAVEN_LOCAL'
-            jdk 'JAVA_HOME'
+            jdk 'JDK_LOCAL'
           }
        stages{
            stage('Pipeline Bookshelf') {
