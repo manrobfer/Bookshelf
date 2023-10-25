@@ -18,8 +18,6 @@ public class CathegoryServiceImpl implements CathegoryService {
 	@Autowired
 	CathegoryDao cathegoryDao;
 
-	
-
 	@Override
 	public Cathegory findById(Long id) {
 		return cathegoryDao.findById(id).orElseThrow(() -> new CathegoryException(id));
