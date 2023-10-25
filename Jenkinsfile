@@ -20,7 +20,7 @@ agent any
                     scannerHome = tool 'SONAR_SCANNER_LOCAL'
               }
              steps{
-                 sh  "${scannerHome}/bin/sonnar-scanner -e  -Dsonar.projectKey=BookShelf-Deployer -Dsonar.host.url=http://localhost:9000 -Dsonar.login=squ_f51d7dc87f3d47a8d38bf84c3006fcf5b54eac16  -Dsonar.java.binaries=target "
+                 sh  "${scannerHome}\bin\sonnar-scanner -e  -Dsonar.projectKey=BookShelf-Deployer -Dsonar.host.url=http://localhost:9000 -Dsonar.login=squ_f51d7dc87f3d47a8d38bf84c3006fcf5b54eac16  -Dsonar.java.binaries=target "
 
               }
           }
