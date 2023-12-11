@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 import br.com.livros.dto.AuthorDto;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -56,7 +57,7 @@ public class AuthorController  {
 			@ApiResponse(responseCode = "404", description = "Author Not Saved" )}) 
 	@RequestMapping(value = "/find/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Optional<Author> findById(@PathVariable Long id){
-		System.out.println("id encontrado "+ id);
+		logger.info("id encontrado -> "+ id);
 		return authorsService.findById(id);
 			
 	}

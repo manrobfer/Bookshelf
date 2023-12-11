@@ -23,9 +23,8 @@ public class PressController {
     @Autowired
     PressService pressService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @Operation(summary = "Saves Press Title", description = "Descricao")
-
+    @CrossOrigin("*")
+    @Operation(summary = "Saves Press Title", description = "Press")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Press Saved Successfuly "),
             @ApiResponse(responseCode = "400", description = "Invalid Path" ),
@@ -36,7 +35,7 @@ public class PressController {
         return new ResponseEntity<Press>(pressService.save(pressDto), HttpStatus.CREATED);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin("*")
     @Operation(summary = "Gets All Press Available")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "All Press Found "),

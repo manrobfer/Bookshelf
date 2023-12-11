@@ -25,7 +25,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
-@RequestMapping("/cathegory")
+@RequestMapping("/category")
 public class CathegoryController {
 	
 	private static Logger log = LogManager.getLogger(CathegoryController.class);
