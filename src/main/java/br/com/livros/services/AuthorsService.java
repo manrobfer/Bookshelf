@@ -10,7 +10,7 @@ public interface AuthorsService {
 	
 	 Optional<Author> findById(Long id);
 	 AuthorDto save(AuthorDto author);
-	 Author delete(AuthorDto author);
+	 Author deleteById(Long id);
 	 List<Author> findAll();
 	
 	

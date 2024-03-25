@@ -30,9 +30,8 @@ public class AthorsServiceImpl implements AuthorsService {
 	}
 
 	@Override
-	public Author delete(AuthorDto authorDto) {
-
-		return authorDao.delete(authorDto.convertFromAuthorDto());
+	public Author deleteById(Long id ) {
+		return authorDao.deleteById(id);
 	}
 
 	@Override

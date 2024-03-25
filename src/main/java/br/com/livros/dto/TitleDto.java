@@ -5,8 +5,6 @@ import br.com.livros.enuns.Format;
 import br.com.livros.models.Title;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
-
-import javax.persistence.Column;
 import java.util.Date;
 
 @Data

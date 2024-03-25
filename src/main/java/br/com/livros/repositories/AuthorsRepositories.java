@@ -7,5 +7,5 @@ import br.com.livros.models.Author;
 
 @Repository
 public interface AuthorsRepositories extends CrudRepository<Author, Long>  {
-
+    void deleteById(Long id);
 }

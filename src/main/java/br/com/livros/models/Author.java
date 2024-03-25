@@ -3,9 +3,8 @@ package br.com.livros.models;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.*;
-
 import br.com.livros.dto.AuthorDto;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -16,15 +15,11 @@ import lombok.*;
 @ToString
 public class Author implements Serializable{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name="author_seq",
-			           sequenceName="author_seq",
-			           allocationSize=1)
+	@SequenceGenerator(name="author_seq", sequenceName="author_seq", allocationSize=1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="author_seq")
 	@Column(name =  "AUT_ID")
 	private Long id;

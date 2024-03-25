@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 import br.com.livros.dto.AuthorDto;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @RequestMapping("/author")
+@Tag(name = "Autores")
 public class AuthorController  {
 	private  Logger logger = Logger.getLogger(this.getClass().getName());
 	@Autowired
@@ -68,10 +70,10 @@ public class AuthorController  {
 			@ApiResponse(responseCode = "200", description = "Author Deleted Successfuly "), 
 			@ApiResponse(responseCode = "400", description = "Invalid Path" ), 
 			@ApiResponse(responseCode = "404", description = "Author Not Deleted" )}) 
-	@RequestMapping(value = "/delete", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE,
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)		
-	public Author delete(AuthorDto author){
-		return authorsService.delete(author);
+	public Author delete(@PathVariable Long id ){
+		return authorsService.deleteById(id);
 			
 	}
 	

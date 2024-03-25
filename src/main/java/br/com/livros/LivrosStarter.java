@@ -10,9 +10,7 @@ import java.util.logging.Logger;
 @SpringBootApplication
 public class LivrosStarter {
 	static Logger log = Logger.getLogger(LivrosStarter.class.getName());
-	
 	public static void main(String[] args) {
-		
         SpringApplication.run(LivrosStarter.class, args);	
         
 	}

@@ -7,7 +7,10 @@ import br.com.livros.models.Cathegory;
 
 @Repository
 public interface CathegoryRepository extends CrudRepository<Cathegory, Long>  {
+
+    void deleteByCodigo(int codigo);
 	
 		 
+
 
 }

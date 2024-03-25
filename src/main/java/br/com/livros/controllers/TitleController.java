@@ -1,33 +1,34 @@
 package br.com.livros.controllers;
 
 
+
 import br.com.livros.dto.TitleDto;
-import br.com.livros.models.Cathegory;
 import br.com.livros.models.Title;
 import br.com.livros.services.TitleService;
 
-import io.swagger.annotations.Api;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
 import java.util.List;
 
 
 @RestController
 @RequestMapping("/title")
+@Tag(name = "Titulo")
 public class TitleController {
 
     @Autowired
     TitleService titleService;
+
 
     @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Saves Media Title", description = "Descricao")
@@ -41,6 +42,7 @@ public class TitleController {
     public ResponseEntity<Title> save(@RequestBody TitleDto authorDto) {
         return new ResponseEntity<Title>(titleService.save(authorDto), HttpStatus.CREATED);
     }
+
 
     @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Gets All Titles Available")

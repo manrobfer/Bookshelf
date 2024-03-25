@@ -2,9 +2,11 @@ package br.com.livros.controllers;
 
 import java.util.List;
 
-import javax.validation.Valid;
+
 
 import br.com.livros.dto.CategoryDto;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @RequestMapping("/category")
+@Tag(name = "Categoria")
 public class CathegoryController {
 	
 	private static Logger log = LogManager.getLogger(CathegoryController.class);
@@ -69,19 +72,19 @@ public class CathegoryController {
 	        return new ResponseEntity<Cathegory>(categoriaservico.save(categorias),HttpStatus.CREATED);
 
 	}
-	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@Operation(summary = "Deletes Cathegories of Books ")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Cathegory Deleted Successfuly "), 
 			@ApiResponse(responseCode = "400", description = "Invalid Path" ), 
 			@ApiResponse(responseCode = "404", description = "Cathegory Not Deleted" )}) 
-	@RequestMapping(value = "/delete", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)	
-	public ResponseEntity<Cathegory> delete(@RequestBody @Valid Cathegory categorias) {			
-        return new ResponseEntity<Cathegory>(categoriaservico.delete(categorias),HttpStatus.CREATED);
+	@RequestMapping(value = "/delete/{codigo}", method = RequestMethod.DELETE)
+	public ResponseEntity delete(@PathVariable int codigo) {
+		System.out.println("Codigo da categoria recebida " + codigo);
+		categoriaservico.delete(codigo);
+        return new ResponseEntity(HttpStatus.OK);
 
-}
+   }
 	
 	
 

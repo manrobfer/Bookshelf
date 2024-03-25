@@ -36,7 +36,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
 		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
 	}
 	
-	@Override
+
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(
 	        MethodArgumentNotValidException ex, HttpHeaders headers, 
 	        HttpStatus status, WebRequest request) {

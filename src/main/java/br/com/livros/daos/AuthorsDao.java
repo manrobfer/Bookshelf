@@ -29,8 +29,8 @@ public class AuthorsDao {
 		return authorRepository.save(author);
 	}
 	
-	public Author delete(Author author) {
-		authorRepository.delete(author);
+	public Author deleteById(Long id) {
+		authorRepository.deleteById(id);
 	    return null;
 	}
 

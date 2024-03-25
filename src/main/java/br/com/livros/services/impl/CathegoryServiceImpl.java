@@ -41,9 +41,8 @@ public class CathegoryServiceImpl implements CathegoryService {
 	}
 
 	@Override
-	public Cathegory delete(Cathegory catherory) {
-		
-		return  cathegoryDao.delete(catherory);
+	public void delete(int codigo) {
+		 cathegoryDao.delete(codigo);
 	}
 	
 	

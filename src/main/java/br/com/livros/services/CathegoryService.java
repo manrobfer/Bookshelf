@@ -9,7 +9,7 @@ public interface CathegoryService {
 	
 	 Cathegory findById(Long id);
 	public Cathegory save(CategoryDto catherory);
-	Cathegory delete(Cathegory catherory);
+	void delete(int codigo);
 	 List<Cathegory> findAll();
 
 }

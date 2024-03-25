@@ -26,8 +26,6 @@ public class TitleDao {
     public Cathegory delete(Title category) {
         titleRepository.delete(category);
         return null;
-
-
     }
 
     public List<Title> findAllTitles(){

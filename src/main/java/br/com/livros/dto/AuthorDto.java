@@ -1,13 +1,14 @@
 package br.com.livros.dto;
 
+
 import br.com.livros.models.Author;
+
+import jakarta.persistence.Column;
 import org.springframework.beans.BeanUtils;
 
-import javax.persistence.Column;
-import java.sql.Date;
+import java.util.Date;
 
 public class AuthorDto {
-
 
     @Column(name = "AUT_CDG")
     private String codigo;

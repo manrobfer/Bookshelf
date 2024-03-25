@@ -5,7 +5,7 @@ import br.com.livros.models.Press;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
-import javax.persistence.Column;
+
 import java.util.Date;
 
 @Data

@@ -1,15 +1,15 @@
 package br.com.livros.daos;
 
-import java.util.List;
-import java.util.Optional;
 
 import br.com.livros.dto.CategoryDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-
 import br.com.livros.models.Cathegory;
 import br.com.livros.repositories.CathegoryRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Optional;
 
 @Component
 public class CathegoryDao {
@@ -22,12 +22,10 @@ public class CathegoryDao {
 		return cathegoryRepository.save(category.convertFromCathegoryDto());
 		
 	}
-	
-	public Cathegory delete(Cathegory category) {
-		cathegoryRepository.delete(category);
-		return null;
-		
-		
+
+	@Transactional
+	public void delete(int codigo) {
+		cathegoryRepository.deleteByCodigo(codigo);
 	}
 	
 	public List<Cathegory> findAllCategories(){
